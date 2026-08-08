@@ -155,6 +155,29 @@ h1 .yl{color:var(--yellow);border-bottom:4px solid var(--yellow);padding-bottom:
 .verdict p{color:#C4CFD9;font-size:.95rem}
 .verdict p b{color:#fff}
 
+/* ---------- 现场轶事 / 反差块 ---------- */
+.irony{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--red);
+  border-radius:14px;padding:1.9rem 2.1rem;margin:2rem 0;position:relative;overflow:hidden}
+.irony::after{content:"?!";position:absolute;right:1.4rem;top:.7rem;font-family:var(--serif);
+  font-weight:900;font-size:4.6rem;line-height:1;color:var(--red);opacity:.10;pointer-events:none}
+.irony .tag{display:inline-block;font-family:var(--num);font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--red-deep);background:var(--red-bg);
+  border:1px solid rgba(217,64,58,.28);border-radius:999px;padding:.24rem .8rem;margin-bottom:.9rem}
+.irony h3{font-family:var(--serif);font-weight:900;color:var(--ink);
+  font-size:clamp(1.15rem,2.6vw,1.5rem);line-height:1.45;margin-bottom:.85rem}
+.irony p{font-size:.94rem;color:var(--ink2);line-height:1.95;margin-bottom:.7rem;max-width:56em}
+.irony p:last-child{margin-bottom:0}
+.irony p b{color:var(--ink)}
+.irony .said{border-left:3px solid var(--yellow);background:var(--yellow-dim);
+  border-radius:0 8px 8px 0;padding:.75rem 1rem;font-family:var(--serif);
+  color:var(--ink);font-size:.97rem;line-height:1.85;margin:.2rem 0 1rem}
+.irony .askrow{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.1rem}
+.irony .ask{background:var(--paper);border:1px dashed var(--line);border-radius:10px;
+  padding:.9rem 1.05rem;font-size:.89rem;color:var(--ink2);line-height:1.8}
+.irony .ask b{display:block;color:var(--red-deep);font-family:var(--serif);
+  font-weight:900;font-size:.98rem;margin-bottom:.25rem}
+@media(max-width:720px){.irony .askrow{grid-template-columns:1fr}}
+
 /* ---------- 国标卡片 ---------- */
 .standards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.6rem}
 .std{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.4rem 1.3rem;position:relative;transition:transform .35s,box-shadow .35s;overflow:hidden}
@@ -440,6 +463,20 @@ footer b{color:var(--yellow)}
     <div class="verdict rv">
       <h3>没有精确数据，可变车道就是摆设。</h3>
       <p>以上数据为个人目测估计，可能与实际有偏差。但核心问题不变：如果管理部门认为两条左转车道是合理的，请拿出分时段、分转向的精确流量数据来证明。可变车道的'可变'二字，本身就要求以实时数据为决策依据——没有数据支撑的设置，无论初衷如何，都失去了科学性和合法性。</p>
+    </div>
+
+    <div class="irony rv">
+      <span class="tag">补充 · 一个真实的反差</span>
+      <h3>我提交意见后，与我沟通的交警同志说，他是对着监控视频，一个车道一个相位地把车辆逐辆数出来的。</h3>
+      <div class="said">"我对着视频一个一个数每个车道每个相位内的车的数量。"</div>
+      <p>我首先要说明：这位同志的态度是认真的，愿意为一条市民意见去逐帧核对流量，这份认真值得尊重。<b>问题不在他，而在于他手里除了肉眼和暂停键，似乎没有别的工具可用。</b></p>
+      <p>但这件事实在令人啼笑皆非——<b>我们投入了那么大力气、那么多预算建设的"城市大脑"，究竟去哪儿了？</b>杭州是"城市大脑"的发源地和示范城市，交通治理一直是它对外展示的核心场景。如果连"某路口各相位、各转向、分时段的车辆数"这样一条最基础的数据，都还需要一线民警坐在屏幕前用手指点着数，那么这套系统在真实决策链条上究竟发挥了什么作用？</p>
+      <p>退一步说，即便城市大脑的数据一时调不出来，<b>让技术人员用现成的开源模型写一个视频车辆计数器，很难吗？</b>基于视频流做车辆检测、跟踪、按车道与相位分桶计数，如今是一项成熟到近乎标准化的工程任务——开源方案齐备，一名工程师若能拿到路口视频，几天之内就能跑出可用的分时段、分转向流量表，精度和一致性都远胜人工点数。这类工具一旦建成，可以长期复用于全市所有路口，而不是每次有市民提意见，就让一位民警重新用肉眼数一遍。</p>
+      <p>我提出这一点，不是为了追究个人，而是想说明一个更根本的问题：<b>可变车道的"可变"，本质上依赖持续、自动、可复核的流量数据。</b>如果获取数据的方式停留在人工点数，那么无论初衷多好，可变车道都不可能真正实现"依需动态调控"，只能沦为一块昼夜不变的指示牌。数据能力的缺口，才是当前问题的根源。</p>
+      <div class="askrow">
+        <div class="ask"><b>请说明</b>杭州"城市大脑"交通模块目前能否输出本路口分时段、分转向的流量数据？若能，请直接提供；若不能，请说明原因。</div>
+        <div class="ask"><b>建议</b>由技术部门建设或采购视频流自动车辆计数能力，形成可长期复用的路口流量底账，替代人工逐帧点数。</div>
+      </div>
     </div>
   </div>
 </section>
